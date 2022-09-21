@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'center', /* 세로축을 기준으로 상하에 대한 정렬 */
+    justifyContent: 'center', /* 가로축을 기준으로 좌우에 대한 정렬 */
     color : '#234343'
   },
   container2: {
