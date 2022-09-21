@@ -14,6 +14,22 @@ export default function App() {
         <Text>It's me!</Text>
       </View>
       <Button title='Tabs me!!'/>
+      <View style={{
+        padding : 50, 
+        flexDirection : 'row', /*row는 left-to-right, column은 top-to-bottom*/
+        width : '80%', height : 300
+      }}>
+        {/* Flexbox */}
+        <View style ={{backgroundColor:'red', justifyContent:'center', alignItems:'center'}}>
+          <Text>Hahaha</Text>
+        </View>
+        <View style ={{backgroundColor:'blue', justifyContent:'center', alignItems:'center'}}>
+          <Text>Lalala</Text>
+        </View>
+        <View style ={{backgroundColor:'green', justifyContent:'center', alignItems:'center'}}>
+          <Text>Yayaya</Text>
+        </View>
+      </View>
     </View>
   );
 }
