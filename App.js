@@ -1,54 +1,57 @@
-import { StatusBar } from 'expo-status-bar';
-import reactDom from 'react-dom';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      {/* inilne style */}
-      <Text style={{margin:16, borderWidth: 2, borderColor: 'red'}}>
-        Hello World!
-      </Text>
-      <StatusBar style="auto" />
-      <View style={styles.container2}>
-        <Text>It's me!</Text>
-      </View>
-      <Button title='Tabs me!!'/>
-      
-      <View style={{
-        padding : 50, 
-        flexDirection : 'row', /*row는 left-to-right, column은 top-to-bottom*/
-        width : '80%', height : 400, 
-        justifyContent:'center', /* align content : main axis top to bottom */
-        alignItems:'stretch' /* align content : cross axis left to right */
-      }}>
-        {/* Flexbox */}
-        <View style ={{backgroundColor:'red', flex: 1, justifyContent:'flex-end', alignItems:'center'}}>
-          <Text>Hahaha</Text>
+    const [enteredGoalText, setEnteredGoalText] = useState('');
+
+    function goalInputHandler(enteredText) { 
+        setEnteredGoalText(enteredText);
+    }
+
+    function addGoalHandler() {
+        console.log(enteredGoalText);
+     }
+
+    return (
+        <View style={styles.appContainer}>
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.textInput}
+                    placeholder="Your course goal!"
+                    onChangeText={goalInputHandler} 
+                />
+                <Button title="Add Goal" onPress={addGoalHandler}/>
+            </View>
+            <View style={styles.goalsContainer}>
+                <Text>List of goals</Text>
+            </View>
         </View>
-        <View style ={{backgroundColor:'blue', flex: 2, justifyContent:'space-between', alignItems:'stretch'}}>
-          <Text>Lalala</Text>
-        </View>
-        <View style ={{backgroundColor:'green', flex: 3, justifyContent:'center', alignItems:'flex-start'}}>
-          <Text>Yayaya</Text>
-        </View>
-      </View>
-    </View>
-  );
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center', /* 세로축을 기준으로 상하에 대한 정렬 */
-    justifyContent: 'center', /* 가로축을 기준으로 좌우에 대한 정렬 */
-    color : '#234343'
-  },
-  container2: {
-    backgroundColor: '#eabbbb',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color : '#234343'
-  },
-});
+    appContainer: {
+        flex: 1,
+        paddingTop: 50,
+        paddingHorizontal: 16
+    },
+    inputContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 24,
+        borderBottomWidth: 1,
+        borderBottomColor: '#efddcc'
+    },
+    textInput: {
+        borderWidth: 1,
+        borderColor: '#cccccc',
+        width: '70%',
+        marginRight: 8,
+        padding: 8,
+    },
+    goalsContainer: {
+        flex: 4
+    }
+})
